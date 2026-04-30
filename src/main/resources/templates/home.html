@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+
+    <div class="card">
+        <h3>Наши автомобили</h3>
+
+        <table>
+            <tr>
+                <th>Авто</th>
+                <th>Цена</th>
+            </tr>
+
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.name}"></td>
+                <td th:text="${car.price} + ' €/день'"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>Галерея</h3>
+        <div class="gallery">
+            <img th:each="car : ${cars}" th:src="${car.image}">
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Видео</h3>
+        <iframe width="100%" height="315"
+                src="https://rutube.ru/play/embed/d83f661f4fdeef5ccd0d90d4a75aa69e"
+                frameborder="0"
+                allowfullscreen>
+        </iframe>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

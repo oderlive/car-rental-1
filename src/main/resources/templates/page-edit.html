@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Редактирование страницы</h2>
+
+        <form th:action="@{/admin/save}" method="post" th:object="${page}">
+
+            <input type="hidden" th:field="*{id}"/>
+
+            <label>Название:</label>
+            <input type="text" th:field="*{title}" required/>
+
+            <label>Slug (URL):</label>
+            <input type="text" th:field="*{slug}" required/>
+
+            <label>Контент:</label>
+            <textarea th:field="*{content}" rows="6"></textarea>
+
+            <button type="submit">Сохранить</button>
+        </form>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

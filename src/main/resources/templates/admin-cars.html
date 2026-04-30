@@ -1,0 +1,27 @@
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <a href="/admin/car/new" class="btn">+ Добавить авто</a>
+
+    <div class="card admin-card" th:each="car : ${cars}">
+        <div class="admin-item">
+
+            <div>
+                <a th:href="@{/car/{id}(id=${car.id})}">
+                    <img th:src="${car.image}" style="max-width: 50px;">
+                </a>
+                <h3 th:text="${car.name}"></h3>
+                <p th:text="${car.price} + ' €/день'"></p>
+            </div>
+
+            <div>
+                <a th:href="@{/admin/car/edit/{id}(id=${car.id})}" class="btn edit-btn">Редактировать</a>
+                <a th:href="@{/admin/car/delete/{id}(id=${car.id})}" class="btn delete-btn">Удалить</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>

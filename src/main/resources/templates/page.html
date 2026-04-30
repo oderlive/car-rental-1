@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+
+    <div th:if="${page != null}" class="card">
+        <h2 th:text="${page.title}"></h2>
+        <p th:text="${page.content}"></p>
+    </div>
+
+    <div th:if="${page == null}" class="card">
+        <p>Страница не найдена</p>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

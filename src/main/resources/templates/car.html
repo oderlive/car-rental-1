@@ -1,0 +1,47 @@
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <button onclick="openModal()">Заказать</button>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeModal()" class="close">&times;</span>
+
+            <form th:action="@{/order}" method="post">
+                <input type="hidden" name="carId" th:value="${car.id}"/>
+
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="text" name="phone" placeholder="Телефон" required>
+
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <h2 th:text="${car.name}"></h2>
+        <img th:src="${car.image}" style="width:300px">
+        <p th:text="${car.price} + ' €/день'"></p>
+    </div>
+
+    <div class="card">
+        <h3>Отзывы</h3>
+
+        <div th:each="f : ${car.feedbacks}">
+            <p><b th:text="${f.name}"></b></p>
+            <p th:text="${f.message}"></p>
+            <hr>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script>
+    function openModal() {
+        document.getElementById('modal').style.display = 'block';
+    }
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>

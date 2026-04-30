@@ -1,0 +1,29 @@
+<div th:fragment="header">
+    <head>
+        <meta charset="UTF-8">
+        <title>Car Rental</title>
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+
+    <header>
+        <h1>Car Rental</h1>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/contacts">Контакты</a>
+            <a href="/gallery">Галерея</a>
+            <a href="/feedback">Обратная связь</a>
+
+            <span sec:authorize="isAuthenticated()">
+                <a href="/admin/cars">Автомобили</a>
+                <a href="/admin/orders">Заказы</a>
+                <form th:action="@{/logout}" method="post" style="display:inline;">
+                    <button type="submit">Выход</button>
+                </form>
+            </span>
+
+            <span th:if="${!#authorization.expression('isAuthenticated()')}">
+                <a href="/login">Вход</a>
+            </span>
+        </nav>
+    </header>
+</div>

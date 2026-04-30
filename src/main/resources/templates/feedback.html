@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <div class="card wide-form">
+        <h2>Обратная связь</h2>
+
+        <form action="/feedback" method="post">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <textarea name="message" placeholder="Сообщение" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <div class="card">
+        <h2>Галерея автомобилей</h2>
+
+        <div class="gallery">
+            <div class="card" th:each="car : ${cars}">
+                <a th:href="@{/car/{id}(id=${car.id})}">
+                    <img th:src="${car.image}">
+                </a>
+                <h3 th:text="${car.name}"></h3>
+                <p th:text="${car.price} + ' €/день'"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
