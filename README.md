@@ -1,2 +1,1 @@
 ﻿# mvn spring-boot:run
-# postgresql db
