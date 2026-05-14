@@ -30,17 +30,23 @@ public class PageController {
         return "gallery";
     }
 
-    @GetMapping("/{slug}")
-    public String page(@PathVariable String slug, Model model) {
-        Page page = pageService.getBySlug(slug);
+@GetMapping("/{slug}")
+public String page(@PathVariable String slug, Model model) {
 
-        if (page == null) {
-            return "error";
-        }
-
-        model.addAttribute("page", page);
-        return slug;
+    if (slug.equals("error") || slug.equals("favicon.ico")) {
+        return "redirect:/";
     }
+
+    Page page = pageService.getBySlug(slug);
+
+    if (page == null) {
+        return "error";
+    }
+
+    model.addAttribute("page", page);
+
+    return slug;
+}
 
 
 
